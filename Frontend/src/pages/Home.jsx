@@ -1,18 +1,21 @@
 import React from 'react'
-
+import Profile from './Profile'
+import NewsandInformation from './NewsandInformation'
+import Feed from './Feed'
+import Footer from './Footer'
 const Home = () => {
   return (
-    <div className='flex justify-around pt-16 space-x-2.5 p-2.5 '>
+    <div className='flex items-start justify-around  pt-8 '>
       <div className='bg-gray-700'>
-        Profile section is here 
+        <Profile/>
       </div>
       <div className='bg-gray-700'>
-        your feed should be here : 
+        <Feed/>
       </div>
       <div className='bg-gray-700'>
-        news and information will be here only : 
+        <NewsandInformation/>
       </div>
-    </div>
+    </div >
   )
 }
 

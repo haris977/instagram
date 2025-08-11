@@ -3,7 +3,15 @@ import React from 'react'
 const Profile = () => {
   return (
     <div>
-      this is my profile...
+      <div>
+        this is my profile...
+      </div>
+      <div>
+        profile viwers...
+      </div>
+      <div>
+        Your Favorits...
+      </div>
     </div>
   )
 }

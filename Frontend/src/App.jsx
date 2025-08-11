@@ -6,6 +6,7 @@ import Follower from './pages/Follower'
 import { Routes, Route } from 'react-router-dom'
 import Message from './pages/Message'
 import Profile from './pages/Profile'
+import Footer from './pages/Footer'
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/follow" element={<Follower />} />
       </Routes>
+      <div className='absolute bottom-0 w-screen flex justify-center bg-gray-900 text-white'>
+
+      <Footer />
+      </div>
     </>
   )
 }

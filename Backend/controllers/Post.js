@@ -106,7 +106,80 @@ export const addcomment = async (req, res) => {
     })
   }
 }
+export const  updatelikeonpost = async(req,res)=>{
+  try{
 
-
+    const {postId} = req.body;
+    const userId = req.user.id;
+    if (!userId){
+      return res.status(401).json({
+        success:false,
+        message:"this user doesn't exist",
+      })
+    }
+    const postdetails = await post.findById(postId);
+    if (!postdetails){
+      return res.status(401).json({
+        success:false,
+        message:"there is not post with this name in database : ",
+      })
+    }
+    let updatedpart ;
+    if (postdetails.likes.include(userId)){
+      updatedpart = await post.findByIdAndUpdate(postId,
+        {
+          $pull:{
+            likes:userId,
+          }
+        },
+        {new:true},
+        
+      ).populate("user likes")
+      .populate({
+        path:"comments",
+        populate:{
+          path:"user",
+          model:"user",
+          select:"user image fullname",
+        },
+      }).exec();
+    }
+    else{
+      updatedpart = await post.findByIdAndUpdate(postId,{
+        $push:{
+          likes:{
+            $each:[userId],
+            position:0 //this inserted at the fist position: 
+          }
+        },
+        
+      },
+      {new:true}
+    ).populate("user likes")
+    .populate({
+      path:"comments",
+      populate:{
+        path:"user",
+        model:"user",
+        select:"username and image",
+      }
+    }).exec();
+    }
+    return res.status(200).json({
+      success:true,
+      updatedpart,
+      message:"like update succesfull",
+    })
+  }
+  catch(error){
+    console.log(error);
+    return res.status(500).json({
+      success:false,
+      message:"there is some error i find while updating your likes : "
+    })
+  }
+}
+  
+  
 
 
