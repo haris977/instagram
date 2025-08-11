@@ -21,17 +21,11 @@ const Visible = ()=>{
         <div><Link to="/follow" className='cursor-pointer'><RiUserFollowFill /></Link></div>
         <div><Link to="/message" className='cursor-pointer'><RiMessage2Fill /></Link></div>
         <div><Link to="/notification" className='cursor-pointer'><IoNotifications /></Link></div>
-        <button
-  onClick={(e) => {
-    e.stopPropagation(); // prevent document listener from firing
-    setOpen((prev) => !prev);
-  }}
-  className="cursor-pointer"
->
-  <CgProfile />
-</button>
-      </div>
-    </div>
+        
+          <Profilelist/>
+        
+  </div>
+  </div>
   )
 }
 

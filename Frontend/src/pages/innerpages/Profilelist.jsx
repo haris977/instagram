@@ -17,27 +17,30 @@ const Profilelist = () => {
 }, []);
 
   return (
-    <div className='relative' ref={dropdownRef}>
+    <div className='relative ' ref={dropdownRef}>
       <button
         onClick={()=>setOpen((prev)=>!prev)}
       >
+        <div className='cursor-pointer'>
+
         <CgProfile/>
+        </div>
       </button>
       {open && (
         <div className='absolute right-0 mt-2 bg-green-400 shadow-lg rounded-lg border border-gray-200'>
           <ul className='py-1'>
-            <li>
-              <button>
+            <li >
+              <button className='cursor-pointer'>
                 Profile
               </button>
             </li>
-            <li>
-              <button>
+            <li >
+              <button className='cursor-pointer'>
                 sitting
               </button>
             </li>
-            <li>
-              <button>
+            <li >
+              <button className='cursor-pointer'>
                 logout
               </button>
             </li>
